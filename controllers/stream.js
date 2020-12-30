@@ -5,7 +5,7 @@ const needle = require('needle');
 const bqsvcs = require('.././services/bigquery.js');
 var ruleCategory;
 
-const bearerToken = 'Bearer AAAAAAAAAAAAAAAAAAAAAN1GKgEAAAAA7iDrp6z%2Fs1P9XZltxpgGbs7ERsQ%3DR85fPDZZk764urVLGQzyVkgyJJpgS39MKOBneEMqPz6beY9oGp'
+const bearerToken = 'Bearer ZZxcffxcxcvcv%2Fs1P9XZltxpgGbs7ERsQ%3DR85fPDZZk764urVLGQzyVkgyJJpgS39MKOBneEMqPz6beY9oGp'
 
 axiosRetry(axios, {
   retries: 3,
