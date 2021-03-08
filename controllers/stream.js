@@ -5,7 +5,7 @@ const needle = require('needle');
 const bqsvcs = require('.././services/bigquery.js');
 var ruleCategory;
 
-const bearerToken = 'Bearer ZZxcffxcxcvcv%2Fs1P9XZltxpgGbs7ERsQ%3DR85fPDZZk764urVLGQzyVkgyJJpgS39MKOBneEMqPz6beY9oGp'
+const bearerToken = 'Bearer AAAAAAAAAAAAAAAAAAAAAN1GKgEAAAAAPJSDmoI8hY9vB6ZgxeBgU9OVSrM%3DMRUYjL7LktexG7QAMMy0UaCkfYmVzEIyi1juXQePwADiMBkjFE'
 
 axiosRetry(axios, {
   retries: 3,
@@ -21,6 +21,42 @@ const router = express.Router();
 router.get("/", function (req, res) {
   streamTweets();
   res.send("Now streaming tweets ..");
+});
+
+router.post("/rules", function (req, res) {
+  let config = {
+    method: 'post',
+    url: 'https://api.twitter.com/2/tweets/search/stream/rules',
+    headers: { 'Authorization' : bearerToken},
+    data: req.body
+  };
+  axios(config)
+  .then(function (response) {
+    console.log('inside method',response.data.data);
+    res.json(response.data.data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });  
+});
+
+router.get("/rules", function (req, res) {
+  console.log('get rules')
+  var rulesData;
+  let config = {
+    method: 'get',
+    url: 'https://api.twitter.com/2/tweets/search/stream/rules',
+    headers: { 'Authorization' : bearerToken}
+  };
+
+  axios(config)
+    .then(function (response) {
+      rulesData = response.data.data;
+      res.send(rulesData);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });  
 });
 
 async function streamTweets() {
