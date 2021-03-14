@@ -3,6 +3,8 @@ const axios = require("axios").default;
 const axiosRetry = require("axios-retry");
 const needle = require('needle');
 const bqsvcs = require('.././services/bigquery.js');
+const hptbq_svcs = require('.././services/hpt-bq-test.js');
+
 var ruleCategory;
 
 const bearerToken = 'Bearer AAAAAAAAAAAAAAAAAAAAAN1GKgEAAAAAPJSDmoI8hY9vB6ZgxeBgU9OVSrM%3DMRUYjL7LktexG7QAMMy0UaCkfYmVzEIyi1juXQePwADiMBkjFE'
@@ -115,6 +117,21 @@ async function getSingleTweet(id) {
       .catch(function (error) {
         console.log(error);
       });
+  }
+
+  router.get("/hpt", function (req, res) {
+    loadHTPData();
+    res.send("Loading HPT tweets ..");
+  });
+
+  async function loadHTPData()  {
+    hptbq_svcs.loadJSONFromGCS()
+    .then(function(response)  {
+      console.log('Response ',response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
 module.exports = router;
