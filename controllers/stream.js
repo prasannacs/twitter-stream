@@ -7,7 +7,7 @@ const hptbq_svcs = require('.././services/hpt-bq-test.js');
 
 var ruleCategory;
 
-const bearerToken = 'Bearer AAAAAAAAAAAAAAAAAAAAAN1GKgEAAAAAPJSDmoI8hY9vB6ZgxeBgU9OVSrM%3DMRUYjL7LktexG7QAMMy0UaCkfYmVzEIyi1juXQePwADiMBkjFE'
+const bearerToken = 'Bearer AAAAAAAAAAAAAAAAAAAAAN1GKgEAAAAAPJSDmoI8hY9vB6ZgxeBgU9OVSrM%'
 
 axiosRetry(axios, {
   retries: 3,
